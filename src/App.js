@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect,useRef } from 'react';
+import NoteEditor from './components/NoteEditor';
+import NotesList from './components/NotesList';
+import './styles.css';
 
-function App() {
+const App = () => {
+  const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
+  const descriptionRef = useRef(null);
+
+  useEffect(() => {
+    const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
+    setNotes(storedNotes);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
+
+  const addNote = (newNote) => {
+    setNotes([...notes, newNote]);
+    setSelectedNote(null);
+  };
+
+  const updateNote = (updatedNote) => {
+    const updatedNotes = notes.map(note => 
+      note.id === updatedNote.id ? updatedNote : note
+    );
+    setNotes(updatedNotes);
+    setSelectedNote(null);
+  };
+
+  const deleteNote = (id) => {
+    setNotes(notes.filter(note => note.id !== id));
+  };
+
+  const editNote = (note) => {
+    // console.log(note);
+    descriptionRef.current.innerHTML=note.description;
+    setSelectedNote(note);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h1>Spd Notes</h1>
+      <NoteEditor addNote={addNote} updateNote={updateNote} selectedNote={selectedNote} descriptionRef={descriptionRef} />
+      <NotesList notes={notes} deleteNote={deleteNote} editNote={editNote} />
     </div>
   );
-}
+};
 
 export default App;

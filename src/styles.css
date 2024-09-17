@@ -1,0 +1,109 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.toolbar {
+  margin-bottom: 10px;
+}
+
+.toolbar button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.note-editor {
+  margin-bottom: 20px;
+}
+
+.title-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.editor-area {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 100px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.add-note-btn {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.notes-list {
+  margin-top: 20px;
+}
+
+.note {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.edit-btn {
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.toolbar {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.toolbar-button {
+  margin: 0 5px; /* Adjust spacing as needed */
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.color-box.red {
+  background-color: red;
+}
+
+.color-box.blue {
+  background-color: blue;
+}
+
+.color-box.green {
+  background-color: green;
+}
